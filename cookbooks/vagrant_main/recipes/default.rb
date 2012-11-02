@@ -2,4 +2,5 @@
 # Recipe:: default
 
 include_recipe 'apt'
+include_recipe 'vim'
 include_recipe 'git'
