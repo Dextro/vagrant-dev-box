@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: vagrant_main
+# Cookbook Name:: lsof
 # Recipe:: default
 #
-# Copyright 2012, Bert Pattyn
+# Copyright 2011, Aaron Bull Schaefer
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -24,11 +24,4 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-include_recipe 'apt'
-include_recipe 'vim'
-include_recipe 'git'
-include_recipe 'curl'
-include_recipe 'ack'
-include_recipe 'tmux'
-include_recipe 'dkms'
-include_recipe 'lsof'
+package 'lsof'
