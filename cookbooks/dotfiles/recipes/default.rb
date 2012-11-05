@@ -45,12 +45,12 @@ user 'vagrant' do
 end
 
 execute 'install-links' do
-  command '/home/vagrant/.dotfiles/install_unattended.sh'
+  command '/home/vagrant/.dotfiles/' + node['dotfiles']['install']
   user 'vagrant'
   group 'vagrant'
   cwd '/home/vagrant/.dotfiles'
   environment ({'HOME' => '/home/vagrant'})
   action :nothing
   subscribes :run, resources(:git => 'dotfiles')
-  only_if { File.exists?('/home/vagrant/.dotfiles/install_unattended.sh') }
+  only_if { File.exists?('/home/vagrant/.dotfiles/' + node['dotfiles']['install']) }
 end

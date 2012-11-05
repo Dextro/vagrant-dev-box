@@ -32,7 +32,8 @@ Vagrant::Config.run do |config|
       :dotfiles => {
         :repository => "git://github.com/wijs/dotfiles-server.git",
         :enable_submodules => false,
-        :shell => '/bin/bash'
+        :shell => '/bin/bash',
+        :install => 'install_unattended.sh'
       }
     })    
   end
