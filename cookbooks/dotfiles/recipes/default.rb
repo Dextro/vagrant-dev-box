@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: vagrant_main
+# Cookbook Name:: dotfiles
 # Recipe:: default
 #
 # Copyright 2012, Bert Pattyn
@@ -24,12 +24,33 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-include_recipe 'apt'
-include_recipe 'vim'
 include_recipe 'git'
-include_recipe 'curl'
-include_recipe 'ack'
-include_recipe 'tmux'
-include_recipe 'dkms'
-include_recipe 'lsof'
-include_recipe 'dotfiles'
+
+node.set_unless['dotfiles']['enable_submodules'] = false
+node.set_unless['dotfiles']['shell'] = '/bin/bash'
+
+git 'dotfiles' do
+  destination '/home/vagrant/.dotfiles'
+  repository node['dotfiles']['repository']
+  reference 'master'
+  action :sync
+  user 'vagrant'
+  group 'vagrant'
+  enable_submodules node['dotfiles']['enable_submodules']
+end
+
+user 'vagrant' do
+  action :modify
+  shell node['dotfiles']['shell']
+end
+
+execute 'install-links' do
+  command '/home/vagrant/.dotfiles/install_unattended.sh'
+  user 'vagrant'
+  group 'vagrant'
+  cwd '/home/vagrant/.dotfiles'
+  environment ({'HOME' => '/home/vagrant'})
+  action :nothing
+  subscribes :run, resources(:git => 'dotfiles')
+  only_if { File.exists?('/home/vagrant/.dotfiles/install_unattended.sh') }
+end

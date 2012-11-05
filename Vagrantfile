@@ -26,7 +26,15 @@ Vagrant::Config.run do |config|
 
   # Enable provisioning with chef solo
   config.vm.provision :chef_solo do |chef|
-    chef.add_recipe('vagrant_main')    
+    chef.add_recipe('vagrant_main')
+
+    chef.json.merge!({
+      :dotfiles => {
+        :repository => "git://github.com/wijs/dotfiles-server.git",
+        :enable_submodules => false,
+        :shell => '/bin/bash'
+      }
+    })    
   end
 
 end
