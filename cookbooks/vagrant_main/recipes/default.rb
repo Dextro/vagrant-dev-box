@@ -24,7 +24,19 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+# update packages with apt
 include_recipe 'apt'
+
+# update installed gems
+execute 'gem update' do
+  command 'gem update'
+  user 'root'
+  group 'root'
+  environment ({'HOME' => '/home/vagrant'})
+  action :run
+end
+
+# install packages
 include_recipe 'vim'
 include_recipe 'git'
 include_recipe 'curl'
@@ -32,4 +44,6 @@ include_recipe 'ack'
 include_recipe 'tmux'
 include_recipe 'dkms'
 include_recipe 'lsof'
+
+# install dotfiles
 include_recipe 'dotfiles'
