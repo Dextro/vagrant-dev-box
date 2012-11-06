@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: vagrant_main
+# Cookbook Name:: gem
 # Recipe:: default
 #
 # Copyright 2012, Bert Pattyn
@@ -24,20 +24,10 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-# update packages with apt
-include_recipe 'apt'
-
-# update installed gems
-include_recipe 'gem'
-
-# install packages
-include_recipe 'vim'
-include_recipe 'git'
-include_recipe 'curl'
-include_recipe 'ack'
-include_recipe 'tmux'
-include_recipe 'dkms'
-include_recipe 'lsof'
-
-# install dotfiles
-include_recipe 'dotfiles'
+execute 'gem update' do
+  command 'gem update --no-ri --no-rdoc'
+  user 'root'
+  group 'root'
+  environment ({'HOME' => '/home/vagrant'})
+  action :run
+end
