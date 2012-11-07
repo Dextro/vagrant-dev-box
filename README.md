@@ -31,6 +31,7 @@ Other distro's are completely untested.
 
     $ git clone git://github.com/Dextro/vagrant-init.git myproject
     $ cd myproject/
+    $ git submodule init
     $ git submodule update
     $ vagrant up
 
