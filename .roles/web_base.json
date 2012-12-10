@@ -1,0 +1,9 @@
+{
+  "name": "web_base",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "description": "",
+  "run_list": [
+    "role[base]"
+  ]
+}

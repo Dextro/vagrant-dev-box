@@ -28,7 +28,7 @@ Vagrant::Config.run do |config|
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ".cookbooks"
     chef.roles_path = ".roles"
-    chef.add_role "base"
+    chef.add_role "web_base"
 
     chef.json.merge!({
       :dotfiles => {
