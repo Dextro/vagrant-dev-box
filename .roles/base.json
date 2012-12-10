@@ -15,6 +15,7 @@
     "recipe[tmux]",
     "recipe[dkms]",
     "recipe[lsof]",
-    "recipe[dotfiles]"
+    "recipe[dotfiles]",
+    "recipe[main::sendmail]"
   ]
 }
