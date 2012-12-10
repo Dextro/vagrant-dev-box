@@ -4,6 +4,15 @@
   "json_class": "Chef::Role",
   "description": "",
   "run_list": [
-    "role[base]"
-  ]
+    "role[base]",
+    "recipe[main::nginx]"
+  ],
+  "default_attributes": {
+    "nginx": {
+      "user": "vagrant",
+      "group": "vagrant",
+      "default_site_enabled": false
+    }
+  },
+  "override_attributes": {}
 }
