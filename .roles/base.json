@@ -5,6 +5,7 @@
   "description": "",
   "run_list": [
     "recipe[apt]",
+    "recipe[main::dotdeb]",
     "recipe[gem]",
     "recipe[vim]",
     "recipe[git]",
