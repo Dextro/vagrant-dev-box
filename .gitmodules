@@ -1,9 +1,6 @@
 [submodule ".cookbooks/runit"]
 	path = .cookbooks/runit
 	url = https://github.com/opscode-cookbooks/runit
-[submodule ".cookbooks/git"]
-	path = .cookbooks/git
-	url = https://github.com/opscode-cookbooks/git
 [submodule ".cookbooks/apt"]
 	path = .cookbooks/apt
 	url = https://github.com/opscode-cookbooks/apt

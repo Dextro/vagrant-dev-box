@@ -9,7 +9,7 @@
     "recipe[build-essential]",
     "recipe[gem]",
     "recipe[vim]",
-    "recipe[git]",
+    "recipe[main::git]",
     "recipe[curl]",
     "recipe[ack]",
     "recipe[tmux]",
