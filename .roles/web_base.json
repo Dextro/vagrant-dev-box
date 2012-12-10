@@ -5,7 +5,8 @@
   "description": "",
   "run_list": [
     "role[base]",
-    "recipe[main::nginx]"
+    "recipe[main::nginx]",
+    "recipe[main::php]"
   ],
   "default_attributes": {
     "nginx": {
