@@ -8,7 +8,7 @@ php_pear "xdebug" do
 end
 
 # apc
-package "php5-apc"
+package "php-apc"
 template "#{node['php']['ext_conf_dir']}/apc.ini" do
   source "apc.ini.erb"
   owner "root"
@@ -35,7 +35,7 @@ package "php5-mysql"
 package "php5-xmlrpc"
 
 # php intl
-# package "php5-intl"
+package "php5-intl"
 
 # php fpm
 package "php5-fpm"
