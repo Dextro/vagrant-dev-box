@@ -13,6 +13,23 @@
       "user": "vagrant",
       "group": "vagrant",
       "default_site_enabled": false
+    },
+    "php": {
+      // CLI (Command Line Interface)
+      "directives": {
+        "date.timezone": "Europe/Brussels"
+      },
+      // FPM (WEB)
+      "directives-fpm": {
+        "date.timezone": "Europe/Brussels",
+        "post_max_size": "32M",
+        "short_open_tag": "Off",
+        "html_errors": "On",
+        "magic_quotes_gpc": "Off",
+        "register_globals": "Off",
+        "session.autostart": "Off",
+        "display_errors": "On"
+      }
     }
   },
   "override_attributes": {}

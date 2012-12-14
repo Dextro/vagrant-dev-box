@@ -48,6 +48,16 @@ service "php5-fpm" do
   action :enable
 end
 
+# php.ini is only adapted in /etc/php5/cli
+# update it also in /etc/php5/fpm
+template "/etc/php5/fpm/php.ini" do
+  source "php.ini.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  notifies :restart, resources(:service => "php5-fpm"), :delayed
+end
+
 # fpm pool setup for user vagrant
 template "#{node['php']['pool_dir']}/www.conf" do
   source "www.conf.erb"
