@@ -6,7 +6,8 @@
   "run_list": [
     "role[base]",
     "recipe[main::nginx]",
-    "recipe[main::php]"
+    "recipe[main::php]",
+    "recipe[main::mysql]"
   ],
   "default_attributes": {
     "nginx": {
@@ -30,6 +31,15 @@
         "session.autostart": "Off",
         "display_errors": "On"
       }
+    },
+    "mysql": {
+      "server_root_password": "root",
+      "server_repl_password": "root",
+      "server_debian_password": "root"
+    },
+    "mysql_charset": {
+      "encoding": "utf8",
+      "collation": "utf8_unicode_ci"
     }
   },
   "override_attributes": {}
