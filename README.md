@@ -1,13 +1,34 @@
-Description
-===========
+# Vagrant DEV BOX
 
-A template for provisioning any new [Vagrant](http://vagrantup.com/)
-project that will will install a core set of useful packages as well as
-personal dotfiles. It uses [Chef Solo](http://vagrantup.com/docs/provisioners/chef_solo.html)
-and includes support for using [`knife`](http://wiki.opscode.com/display/chef/Knife)
-commands with the local _cookbooks/_ directory.
+A Vagrant Development Box setup for developing PHP web applications.
 
-The installed packages include:
+## Description
+
+This is a Vagrant (http://www.vagrantup.com) development setup to ease the development of PHP web applications.
+
+It uses [Chef Solo](http://vagrantup.com/docs/provisioners/chef_solo.html)
+for provisioning and includes support for using [`knife`](http://wiki.opscode.com/display/chef/Knife) commands with the local _.cookbooks/_ directory.
+
+The main packages are (version numbers can be newer):
+
+* nginx 1.1.19
+* php 5.3.10 (php-fpm)
+  * apc
+  * curl
+  * gd
+  * intl
+  * mbstring
+  * memcache
+  * mysql
+  * mysqli
+  * openssl
+  * PDO (with pdo_mysql and pdo_sqlite)
+  * sqlite
+  * xdebug
+  * xmlrpc
+* mysql 5.5.28
+
+The other packages include:
 
 * ack
 * curl
@@ -16,61 +37,57 @@ The installed packages include:
 * lsof
 * tmux
 * vim
-* zsh (dotfiles are bash at the moment)
+* sendmail
+* [dotfiles](https://github.com/wijs/dotfiles-server)
+* PHPUnit
 
-This is all based on [the vagrant-init of Aaron Bull Schaefer](https://raw.github.com/elasticdog/vagrant-init).
+## Usage
 
-Usage
-=====
+I'll use the default Ubuntu Precise 64 basebox.
+If it is not already available, it will download the base box from [vagrantup.com](http://files.vagrantup.com/precise64.box)
 
-I'll only use Debian, so the Vagrant box is a Debian Squeeze 64-bit base box.
-If it is not already available, it will download a fresh and blank base box
-I made myself.
-You can easily replace the box by a different Debian or Ubuntu base box.
-Other distro's are completely untested.
-
-    $ git clone git://github.com/Dextro/vagrant-init.git myproject
+    $ git clone https://github.com/Dextro/vagrant-dev-box.git myproject
     $ cd myproject/
-    $ git submodule init
-    $ git submodule update
+    $ git submodule update --init
     $ vagrant up
 
-Attributes
-----------
+There are 2 hidden folders, .roles and .cookbooks.
+The default role is web_base.json.    
 
-Everything should be customized based on your requirements, as this is
-only meant as a initial template.
+## configuration
 
-All of the included packages are specified in the `vagrant_main`
-cookbook's default recipe, so start there if you want to make changes.
+The configuration can be changed in the role.
+If you want a specific configuration for a project, create a new role.
 
-`knife` Metadata
-----------------
+## default setup
+
+You can put your app in the _www_ folder. The project is accessible on http://localhost:8080
+
+Mysql is reachable on port 8306.
+
+* The root user has password _root_.
+* There is by default a database _vagrant_ and it is reachable with user _vagrant_ and password _vagrant_.
+
+## `knife` Metadata
 
 When using the `knife` command, the contents of the generated cookbook
 README and metadata files are configurable by editing _&lt;myproject&gt;/.chef/knife.rb_.
 See `knife cookbook create --help` for details.
 
-Requirements
-============
+## Todo
 
-Platform
---------
+new role web_base_extra based on web_base and with:
 
-* Debian
-* Ubuntu
+* [gearman](http://gearman.org)
+* [xhprof](http://pecl.php.net/package/xhprof)
+* [Capistrano](https://github.com/capistrano/capistrano)
+* [Varnish](https://www.varnish-cache.org/)
+* [redis](http://redis.io/)
+* [MongoDB](http://www.mongodb.org/)
 
-User
-----
+## License
 
-The recipes currently assume that your VM is using the standard `vagrant`
-user with a home directory of _/home/vagrant_.
-
-
-License
-=======
-
-Copyright (c) 2012, [Bert Pattyn](mailto:bert@dextrose.be)
+Copyright (c) 2012, [Bert Pattyn](mailto:dextro@dextrose.be)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
