@@ -26,8 +26,8 @@ Vagrant::Config.run do |config|
   # folder, and the third is the path on the host to the actual folder.
   # config.vm.share_folder "v-data", "/vagrant_data", "../data"
 
-  # VM Shared folders are quit slow. Using NFS will speed up things. This really
-  # makes a difference when using a lot of files, e.g. Symfony.
+  # VM Shared folders are quiet slow. Using NFS will speed up things. This
+  # really makes a difference when using a lot of files, e.g. Symfony.
   config.vm.share_folder "v-root", "/vagrant", "." , :nfs => true
 
   # Enable provisioning with chef solo
