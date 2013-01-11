@@ -40,6 +40,12 @@ package "php5-intl"
 # php fpm
 package "php5-fpm"
 
+# php mcrypt
+package "php5-mcrypt"
+
+# php imap
+package "php5-imap"
+
 # define php5-fpm service
 service "php5-fpm" do
   service_name "php5-fpm"
