@@ -4,6 +4,7 @@
   "json_class": "Chef::Role",
   "description": "",
   "run_list": [
+    "recipe[main::dotdeb]",
     "recipe[apt]",
     "recipe[build-essential]",
     "recipe[gem]",
