@@ -3,11 +3,11 @@
 
 Vagrant::Config.run do |config|
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "precise64"
+  config.vm.box = "debian-squeeze"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.vm.box_url = "https://dl.dropbox.com/s/hvyfrlk093g5xcz/debian-squeeze.box?dl=1"
 
   # Assign this VM to a host-only network IP, allowing you to access it
   # via the IP. Host-only networks can talk to the host machine as well as
