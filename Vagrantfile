@@ -3,11 +3,11 @@
 
 Vagrant::Config.run do |config|
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "debian-squeeze"
+  config.vm.box = "debian-606"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "https://dl.dropbox.com/s/hvyfrlk093g5xcz/debian-squeeze.box?dl=1"
+  config.vm.box_url = "https://dl.dropbox.com/s/fp8p02zr4agyo6q/debian-606.box?dl=1"
 
   # Assign this VM to a host-only network IP, allowing you to access it
   # via the IP. Host-only networks can talk to the host machine as well as
@@ -34,7 +34,7 @@ Vagrant::Config.run do |config|
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ".cookbooks"
     chef.roles_path = ".roles"
-    chef.add_role "web_base"
+    chef.add_role "base"
 
     chef.json.merge!({
       :dotfiles => {

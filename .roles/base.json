@@ -6,16 +6,6 @@
   "run_list": [
     "recipe[main::dotdeb]",
     "recipe[apt]",
-    "recipe[build-essential]",
-    "recipe[gem]",
-    "recipe[vim]",
-    "recipe[main::git]",
-    "recipe[curl]",
-    "recipe[ack]",
-    "recipe[tmux]",
-    "recipe[dkms]",
-    "recipe[lsof]",
-    "recipe[dotfiles]",
-    "recipe[main::sendmail]"
+    "recipe[dotfiles]"
   ]
 }
